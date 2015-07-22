@@ -48,8 +48,28 @@ var longestWord = function(string) {
         }
     });
     
-    console.log(longest);
+    return longest;
 }
 
 
-// 3. Write a function averageStringNumbers that takes a single string parameter and searches for all the numbers in the string, adds them together, then returns that final number divided by the total amount of letters in the string.
+// 3. Bonus: Write a function averageStringNumbers that takes a single string parameter and searches for all the numbers in the string, adds them together, then returns that final number divided by the total amount of letters in the string.
+var averageStringNumbers = function(string) {
+    var splitStr = string.split('');
+    var totalNumber = 0;
+    var totalLetters = 0;
+    
+    splitStr.forEach(function(str) {
+        if(str.charCodeAt() >= 48 && str.charCodeAt() <= 57) {
+            var num = parseInt(str, 10);
+            totalNumber += num;
+        }
+    });
+    
+    splitStr.forEach(function(str) {
+        if((str.charCodeAt() >= 65 && str.charCodeAt() <= 90) || (str.charCodeAt() >= 97 && str.charCodeAt() <= 122)) {
+            totalLetters += 1;
+        }
+    });
+    
+    return Math.round(totalNumber/totalLetters);
+}
